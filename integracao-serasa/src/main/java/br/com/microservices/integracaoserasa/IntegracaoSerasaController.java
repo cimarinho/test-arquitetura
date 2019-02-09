@@ -20,7 +20,7 @@ public class IntegracaoSerasaController {
 	@Autowired
 	private Configuration configuration;
 
-	@GetMapping("/integracao-serasa/reativar/usuario/{idUsuario}")
+	@GetMapping("/serasa/reativar/usuario/{idUsuario}")
 	@HystrixCommand(fallbackMethod="fallbackIntegracaoSerasa")
 	public ResponseEntity<Void> reativarUsuario(@PathParam("idUsuario") Long idUsuario) {
 
@@ -35,7 +35,7 @@ public class IntegracaoSerasaController {
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
 
-	@GetMapping("/integracao-serasa/reativar-erro/usuario/{idUsuario}")
+	@GetMapping("/serasa/reativar-erro/usuario/{idUsuario}")
 	@HystrixCommand(fallbackMethod="fallbackIntegracaoSerasa")
 	public ResponseEntity<Void>  reativarUsuarioErro(@PathParam("idUsuario") Long idUsuario) {
 		logger.error("erro no servico");
