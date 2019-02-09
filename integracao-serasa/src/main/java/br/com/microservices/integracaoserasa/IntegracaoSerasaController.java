@@ -20,9 +20,9 @@ public class IntegracaoSerasaController {
 	@Autowired
 	private Configuration configuration;
 
-	@GetMapping("/pagamentos/{idUsuario}")
+	@GetMapping("/integracao-serasa/reativar/usuario/{idUsuario}")
 	@HystrixCommand(fallbackMethod="fallbackIntegracaoSerasa")
-	public ResponseEntity<Void> pagamentoRealizado(@PathParam("idUsuario") Long idUsuario) {
+	public ResponseEntity<Void> reativarUsuario(@PathParam("idUsuario") Long idUsuario) {
 
 		String url = this.configuration.getUrl();
 
@@ -33,12 +33,18 @@ public class IntegracaoSerasaController {
 		return new ResponseEntity(HttpStatus.CREATED);
 	}
 
+	@GetMapping("/integracao-serasa/reativar-erro/usuario/{idUsuario}")
+	@HystrixCommand(fallbackMethod="fallbackIntegracaoSerasa")
+	public ResponseEntity<Void>  reativarUsuarioErro(@PathParam("idUsuario") Long idUsuario) {
+		logger.error("erro no servico");
+		throw new RuntimeException("Not available");
+	}
 
 
-	public void fallbackIntegracaoSerasa() {
+	public ResponseEntity<Void> fallbackIntegracaoSerasa(Long idUsuario) {
 		logger.error("ERRO NO ENVIO");
 
-		//enviar fila
+		return new ResponseEntity(HttpStatus.ACCEPTED);
 	}
 
 }
