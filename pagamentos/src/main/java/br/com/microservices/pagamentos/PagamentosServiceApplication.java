@@ -1,4 +1,4 @@
-package com.in28minutes.microservices.currencyconversionservice;
+package br.com.microservices.pagamentos;
 
 import brave.sampler.Sampler;
 import org.springframework.boot.SpringApplication;
@@ -8,12 +8,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@EnableFeignClients("com.in28minutes.microservices.currencyconversionservice")
+@EnableFeignClients("br.com.microservices.pagamentos")
 @EnableDiscoveryClient
-public class CurrencyConversionServiceApplication {
+public class PagamentosServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CurrencyConversionServiceApplication.class, args);
+		SpringApplication.run(PagamentosServiceApplication.class, args);
 	}
 
 	@Bean

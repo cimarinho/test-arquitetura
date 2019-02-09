@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.websocket.server.PathParam;
 
 @RestController
 public class IntegracaoSerasaController {
@@ -22,7 +21,7 @@ public class IntegracaoSerasaController {
 
 	@GetMapping("/serasa/reativar/usuario/{idUsuario}")
 	@HystrixCommand(fallbackMethod="fallbackIntegracaoSerasa")
-	public ResponseEntity<Void> reativarUsuario(@PathParam("idUsuario") Long idUsuario) {
+	public ResponseEntity<Void> reativarUsuario(@PathVariable("idUsuario") Long idUsuario) {
 
 		String url = this.configuration.getUrl();
 
@@ -37,7 +36,7 @@ public class IntegracaoSerasaController {
 
 	@GetMapping("/serasa/reativar-erro/usuario/{idUsuario}")
 	@HystrixCommand(fallbackMethod="fallbackIntegracaoSerasa")
-	public ResponseEntity<Void>  reativarUsuarioErro(@PathParam("idUsuario") Long idUsuario) {
+	public ResponseEntity<Void>  reativarUsuarioErro(@PathVariable("idUsuario") Long idUsuario) {
 		logger.error("erro no servico");
 		throw new RuntimeException("Not available");
 	}

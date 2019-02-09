@@ -13,3 +13,6 @@ Arquitetura Micro-serviço.
 
 Refresh bus
  	http://localhost:8080/actuator/bus-refresh
+
+eureka
+http://localhost:8761/
