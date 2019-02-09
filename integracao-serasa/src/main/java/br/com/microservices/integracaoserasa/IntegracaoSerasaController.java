@@ -26,6 +26,8 @@ public class IntegracaoSerasaController {
 
 		String url = this.configuration.getUrl();
 
+		System.out.println("URL = "+url);
+
 		//Recupera dados do usuario para mandar serasa
 		DadosUsuarioBean dadosUsuarioBean = new DadosUsuarioBean();
 		// enviar (serviço serasa)
