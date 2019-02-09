@@ -6,7 +6,6 @@ Arquitetura Micro-serviço.
 	sudo service rabbitmq-server stop
 	http://localhost:15672/
 
-
 2) start zipzin
 	RABBIT_URI=amqp://localhost java -jar zipkin.jar
 	http://localhost:9411/zipkin/
